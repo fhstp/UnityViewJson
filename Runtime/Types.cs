@@ -47,7 +47,8 @@ namespace At.Ac.FhStp.ViewJson
     /// </summary>
     public enum ViewJsonResultCode
     {
-        
+       Ok = 0,
+       InvalidJson = 1
     }
     
 }

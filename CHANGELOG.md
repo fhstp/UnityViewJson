@@ -13,6 +13,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Define preliminary signature of viewing method
 - Basic style and schema mock types for tests
 - Utility functions for tests for creating rect-transforms
+- Detect invalid json
 
 ### Changed
 

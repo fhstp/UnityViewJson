@@ -1,6 +1,7 @@
 ﻿#nullable enable
 
 using System;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 namespace At.Ac.FhStp.ViewJson
@@ -10,6 +11,19 @@ namespace At.Ac.FhStp.ViewJson
     /// </summary>
     public static class ViewJson
     {
+        private static JToken? TryParse(string json)
+        {
+            try
+            {
+                return JToken.Parse(json);
+            }
+            catch 
+            {
+                return null;
+            }
+        }
+        
+        
         /// <summary>
         /// Attempts to view json data inside of a rect-transform
         /// </summary>
@@ -19,7 +33,10 @@ namespace At.Ac.FhStp.ViewJson
         /// <returns>A result code representing the success or failure of the conversion</returns>
         public static ViewJsonResultCode TryViewJsonIn(RectTransform transform, string json, ViewJsonOptions options)
         {
-            throw new NotImplementedException();
+            var parsed = TryParse(json);
+            if (parsed == null) return ViewJsonResultCode.InvalidJson;
+            
+            return ViewJsonResultCode.Ok;
         }
         
     }
