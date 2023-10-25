@@ -18,6 +18,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - View integers. No formatting yet.
 - View floats. No formatting yet.
 - View booleans. No formatting yet.
+- View null. No formatting yet.
 
 ### Changed
 

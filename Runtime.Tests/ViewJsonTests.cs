@@ -66,6 +66,7 @@ namespace At.Ac.FhStp.ViewJson
         [TestCase("hello")]
         [TestCase(true)]
         [TestCase(false)]
+        [TestCase(null)]
         public void Primitives_Are_Converted_To_Texts(object o)
         {
             var options = new ViewJsonOptions(
@@ -83,7 +84,7 @@ namespace At.Ac.FhStp.ViewJson
             var text = child.GetComponent<TMP_Text>();
             Assert.That(text, Is.Not.Null, "Child should have text");
 
-            var content = JsonConvert.DeserializeObject(json)!.ToString();
+            var content = JsonConvert.DeserializeObject(json)?.ToString() ?? "null";
             Assert.That(text.text, Is.EqualTo(content), "Content should match");
         }
     }
