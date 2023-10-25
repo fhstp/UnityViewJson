@@ -27,11 +27,11 @@ namespace At.Ac.FhStp.ViewJson
         /// <summary>
         /// Attempts to view json data inside of a rect-transform
         /// </summary>
-        /// <param name="transform">The instantiated UI elements will be placed inside/as a child of this transform</param>
+        /// <param name="root">The instantiated UI elements will be placed inside/as a child of this transform</param>
         /// <param name="json">The json to view</param>
         /// <param name="options">Options of how to view the json</param>
         /// <returns>A result code representing the success or failure of the conversion</returns>
-        public static ViewJsonResultCode TryViewJsonIn(RectTransform transform, string json, ViewJsonOptions options)
+        public static ViewJsonResultCode TryViewJsonIn(RectTransform root, string json, ViewJsonOptions options)
         {
             var parsed = TryParse(json);
             if (parsed == null) return ViewJsonResultCode.InvalidJson;
