@@ -12,6 +12,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `ViewJson` class
 - Define preliminary signature of viewing method
 - Basic style and schema mock types for tests
+- Utility functions for tests for creating rect-transforms
 
 ### Changed
 
