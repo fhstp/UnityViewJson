@@ -60,25 +60,26 @@ namespace At.Ac.FhStp.ViewJson
         }
 
         [Test]
-        public void Strings_Are_Converted_To_Texts()
+        [TestCase("hello")] // String
+        public void Primitives_Are_Converted_To_Texts(object o)
         {
-           var options = new ViewJsonOptions(
+            var options = new ViewJsonOptions(
                 MockStyle.MakeDefault(),
                 MockSchema.MakeDefault());
-           const string content = "hello";
-           var json = $"\"{content}\"";
+            var content = o.ToString();
+            var json = o is string ? $"\"{content}\"" : $"{content}";
 
-           var code = ViewJson.TryViewJsonIn(transform, json, options);
-           
-           Assert.That(code, Is.EqualTo(ViewJsonResultCode.Ok), "Should convert ok");
+            var code = ViewJson.TryViewJsonIn(transform, json, options);
 
-           Assert.That(transform.childCount, Is.EqualTo(1), "Incorrect child count");
-           var child = transform.GetChild(0)!;
+            Assert.That(code, Is.EqualTo(ViewJsonResultCode.Ok), "Should convert ok");
 
-           var text = child.GetComponent<TMP_Text>();
-           Assert.That(text, Is.Not.Null, "Child should have text");
-           
-           Assert.That(text.text, Is.EqualTo(content), "Content should match");
+            Assert.That(transform.childCount, Is.EqualTo(1), "Incorrect child count");
+            var child = transform.GetChild(0)!;
+
+            var text = child.GetComponent<TMP_Text>();
+            Assert.That(text, Is.Not.Null, "Child should have text");
+
+            Assert.That(text.text, Is.EqualTo(content), "Content should match");
         }
     }
 }
