@@ -10,6 +10,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Link changelog, license and repo in readme
 - `ViewJson` class
+- Define preliminary signature of viewing method
 
 ## 0.1.0 - 25.10.2023
 
