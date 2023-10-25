@@ -8,12 +8,12 @@
     "name": "Ramon Brullo"
   },
   "dependencies": {
-
+    "com.unity.ugui": "1.0.0"
   },
   "keywords": [
     "json",
-	"ui",
-	"view"
+    "ui",
+    "view"
   ],
   "hideInEditor": false
 }
