@@ -9,6 +9,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 
 - Link changelog, license and repo in readme
+- `ViewJson` class
 
 ## 0.1.0 - 25.10.2023
 
