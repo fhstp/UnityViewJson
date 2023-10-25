@@ -61,6 +61,7 @@ namespace At.Ac.FhStp.ViewJson
 
         [Test]
         [TestCase(123)] // Integer
+        [TestCase(1.23f)] // Float
         [TestCase("hello")] // String
         public void Primitives_Are_Converted_To_Texts(object o)
         {

@@ -1,6 +1,7 @@
 ﻿#nullable enable
 
 using System;
+using System.Globalization;
 using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
@@ -57,12 +58,17 @@ namespace At.Ac.FhStp.ViewJson
             ViewJsonResultCode ConvertInteger(int i, RectTransform container) =>
                 ConvertString(i.ToString(), container);
 
+            ViewJsonResultCode ConvertFloat(float f, RectTransform container) =>
+                ConvertString(f.ToString(CultureInfo.InvariantCulture), container);
+
+
             ViewJsonResultCode Convert(JToken token, RectTransform container)
             {
                 return token.Type switch
                 {
                     JTokenType.String => ConvertString(token.Value<string>()!, container),
                     JTokenType.Integer => ConvertInteger(token.Value<int>()!, container),
+                    JTokenType.Float => ConvertFloat(token.Value<float>()!, container),
                     _ => ViewJsonResultCode.UnsupportedToken
                 };
             }

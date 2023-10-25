@@ -16,6 +16,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Detect invalid json
 - View strings. No formatting yet.
 - View integers. No formatting yet.
+- View floats. No formatting yet.
 
 ### Changed
 
