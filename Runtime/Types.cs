@@ -1,4 +1,6 @@
-﻿namespace At.Ac.FhStp.ViewJson
+﻿#nullable enable
+
+namespace At.Ac.FhStp.ViewJson
 {
 
     /// <summary>

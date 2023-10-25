@@ -12,6 +12,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `ViewJson` class
 - Define preliminary signature of viewing method
 
+### Changed
+
+- Enable explicit nullables
+
 ## 0.1.0 - 25.10.2023
 
 ### Added

@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using UnityEngine;
 
 namespace At.Ac.FhStp.ViewJson
