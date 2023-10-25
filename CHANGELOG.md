@@ -6,6 +6,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Upcoming
 
+### Added
+
+- Link changelog, license and repo in readme
+
 ## 0.1.0 - 25.10.2023
 
 ### Added
