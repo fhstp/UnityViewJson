@@ -8,7 +8,8 @@
     "name": "Ramon Brullo"
   },
   "dependencies": {
-    "com.unity.ugui": "1.0.0"
+    "com.unity.ugui": "1.0.0",
+    "com.unity.test-framework": "1.3.9"
   },
   "keywords": [
     "json",
