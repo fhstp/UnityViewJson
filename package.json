@@ -1,0 +1,19 @@
+{
+  "name": "at.ac.fhstp.view-json",
+  "version": "0.1.0",
+  "displayName": "ViewJson",
+  "description": "A Unity package to view Json data using the builtin UI system",
+  "unity": "2020.3",
+  "author": {
+    "name": "Ramon Brullo"
+  },
+  "dependencies": {
+
+  },
+  "keywords": [
+    "json",
+	"ui",
+	"view"
+  ],
+  "hideInEditor": false
+}
