@@ -54,12 +54,17 @@ namespace At.Ac.FhStp.ViewJson
                 return ViewJsonResultCode.Ok;
             }
 
+            ViewJsonResultCode ConvertInteger(int i, RectTransform container) =>
+                ConvertString(i.ToString(), container);
+
             ViewJsonResultCode Convert(JToken token, RectTransform container)
             {
-                if (token.Type == JTokenType.String)
-                    return ConvertString(token.Value<string>()!, container);
-
-                return ViewJsonResultCode.UnsupportedToken;
+                return token.Type switch
+                {
+                    JTokenType.String => ConvertString(token.Value<string>()!, container),
+                    JTokenType.Integer => ConvertInteger(token.Value<int>()!, container),
+                    _ => ViewJsonResultCode.UnsupportedToken
+                };
             }
 
             var parsed = TryParse(json);
