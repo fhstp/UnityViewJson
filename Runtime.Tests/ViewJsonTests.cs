@@ -1,5 +1,6 @@
 ﻿#nullable enable
 
+using Newtonsoft.Json;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
@@ -60,16 +61,17 @@ namespace At.Ac.FhStp.ViewJson
         }
 
         [Test]
-        [TestCase(123)] // Integer
-        [TestCase(1.23f)] // Float
-        [TestCase("hello")] // String
+        [TestCase(123)]
+        [TestCase(1.23f)]
+        [TestCase("hello")]
+        [TestCase(true)]
+        [TestCase(false)]
         public void Primitives_Are_Converted_To_Texts(object o)
         {
             var options = new ViewJsonOptions(
                 MockStyle.MakeDefault(),
                 MockSchema.MakeDefault());
-            var content = o.ToString();
-            var json = o is string ? $"\"{content}\"" : $"{content}";
+            var json = JsonConvert.SerializeObject(o);
 
             var code = ViewJson.TryViewJsonIn(transform, json, options);
 
@@ -81,6 +83,7 @@ namespace At.Ac.FhStp.ViewJson
             var text = child.GetComponent<TMP_Text>();
             Assert.That(text, Is.Not.Null, "Child should have text");
 
+            var content = JsonConvert.DeserializeObject(json)!.ToString();
             Assert.That(text.text, Is.EqualTo(content), "Content should match");
         }
     }

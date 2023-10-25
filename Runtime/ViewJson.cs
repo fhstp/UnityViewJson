@@ -19,7 +19,7 @@ namespace At.Ac.FhStp.ViewJson
             {
                 return JToken.Parse(json);
             }
-            catch
+            catch(Exception e)
             {
                 return null;
             }
@@ -61,14 +61,17 @@ namespace At.Ac.FhStp.ViewJson
             ViewJsonResultCode ConvertFloat(float f, RectTransform container) =>
                 ConvertString(f.ToString(CultureInfo.InvariantCulture), container);
 
+            ViewJsonResultCode ConvertBoolean(bool b, RectTransform container) =>
+                ConvertString(b.ToString(), container);
 
             ViewJsonResultCode Convert(JToken token, RectTransform container)
             {
                 return token.Type switch
                 {
                     JTokenType.String => ConvertString(token.Value<string>()!, container),
-                    JTokenType.Integer => ConvertInteger(token.Value<int>()!, container),
-                    JTokenType.Float => ConvertFloat(token.Value<float>()!, container),
+                    JTokenType.Integer => ConvertInteger(token.Value<int>(), container),
+                    JTokenType.Float => ConvertFloat(token.Value<float>(), container),
+                    JTokenType.Boolean => ConvertBoolean(token.Value<bool>(), container),
                     _ => ViewJsonResultCode.UnsupportedToken
                 };
             }
