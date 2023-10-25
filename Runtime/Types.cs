@@ -2,13 +2,11 @@
 
 namespace At.Ac.FhStp.ViewJson
 {
-
     /// <summary>
     /// Specifies how to style various types of Json elements
     /// </summary>
     public interface IViewJsonStyle
     {
-        
     }
 
     /// <summary>
@@ -16,7 +14,6 @@ namespace At.Ac.FhStp.ViewJson
     /// </summary>
     public interface IViewJsonSchema
     {
-        
     }
 
     /// <summary>
@@ -24,12 +21,11 @@ namespace At.Ac.FhStp.ViewJson
     /// </summary>
     public struct ViewJsonOptions
     {
-        
         /// <summary>
         /// The style to use
         /// </summary>
         public IViewJsonStyle Style { get; }
-        
+
         /// <summary>
         /// The schema to use
         /// </summary>
@@ -47,8 +43,8 @@ namespace At.Ac.FhStp.ViewJson
     /// </summary>
     public enum ViewJsonResultCode
     {
-       Ok = 0,
-       InvalidJson = 1
+        Ok = 0,
+        InvalidJson = 1,
+        UnsupportedToken = 2
     }
-    
 }

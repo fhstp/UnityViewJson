@@ -19,5 +19,6 @@ namespace At.Ac.FhStp.ViewJson
 
         public static RectTransform MakeTestTransform() => 
             MakeTestCanvas().GetComponent<RectTransform>();
+        
     }
 }

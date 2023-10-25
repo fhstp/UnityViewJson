@@ -1,6 +1,7 @@
 ﻿#nullable enable
 
 using NUnit.Framework;
+using TMPro;
 using UnityEngine;
 using UnityEngine.TestTools;
 using static At.Ac.FhStp.ViewJson.Utilities;
@@ -56,6 +57,28 @@ namespace At.Ac.FhStp.ViewJson
             var code = ViewJson.TryViewJsonIn(transform, json, options);
 
             Assert.That(code, Is.Not.EqualTo(ViewJsonResultCode.InvalidJson));
+        }
+
+        [Test]
+        public void Strings_Are_Converted_To_Texts()
+        {
+           var options = new ViewJsonOptions(
+                MockStyle.MakeDefault(),
+                MockSchema.MakeDefault());
+           const string content = "hello";
+           var json = $"\"{content}\"";
+
+           var code = ViewJson.TryViewJsonIn(transform, json, options);
+           
+           Assert.That(code, Is.EqualTo(ViewJsonResultCode.Ok), "Should convert ok");
+
+           Assert.That(transform.childCount, Is.EqualTo(1), "Incorrect child count");
+           var child = transform.GetChild(0)!;
+
+           var text = child.GetComponent<TMP_Text>();
+           Assert.That(text, Is.Not.Null, "Child should have text");
+           
+           Assert.That(text.text, Is.EqualTo(content), "Content should match");
         }
     }
 }

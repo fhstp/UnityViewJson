@@ -14,6 +14,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Basic style and schema mock types for tests
 - Utility functions for tests for creating rect-transforms
 - Detect invalid json
+- View strings. No formatting yet.
 
 ### Changed
 
