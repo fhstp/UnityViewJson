@@ -11,6 +11,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Link changelog, license and repo in readme
 - `ViewJson` class
 - Define preliminary signature of viewing method
+- Basic style and schema mock types for tests
 
 ### Changed
 
