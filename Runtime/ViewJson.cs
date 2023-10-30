@@ -19,7 +19,7 @@ namespace At.Ac.FhStp.ViewJson
             {
                 return JToken.Parse(json);
             }
-            catch (Exception e)
+            catch
             {
                 return null;
             }
