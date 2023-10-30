@@ -61,18 +61,17 @@ namespace At.Ac.FhStp.ViewJson
         }
 
         [Test]
-        [TestCase(123)]
-        [TestCase(1.23f)]
-        [TestCase("hello")]
-        [TestCase(true)]
-        [TestCase(false)]
-        [TestCase(null)]
-        public void Primitives_Are_Converted_To_Texts(object o)
+        [TestCase("123", "123")]
+        [TestCase("1.23", "1.23")]
+        [TestCase("\"hello\"", "hello")]
+        [TestCase("true", "True")]
+        [TestCase("false", "False")]
+        [TestCase("null", "null")]
+        public void Primitives_Are_Converted_To_Texts(string json, string content)
         {
             var options = new ViewJsonOptions(
                 MockStyle.MakeDefault(),
                 MockSchema.MakeDefault());
-            var json = JsonConvert.SerializeObject(o);
 
             var code = ViewJson.TryViewJsonIn(transform, json, options);
 
@@ -84,7 +83,6 @@ namespace At.Ac.FhStp.ViewJson
             var text = child.GetComponent<TMP_Text>();
             Assert.That(text, Is.Not.Null, "Child should have text");
 
-            var content = JsonConvert.DeserializeObject(json)?.ToString() ?? "null";
             Assert.That(text.text, Is.EqualTo(content), "Content should match");
         }
     }
