@@ -10,6 +10,13 @@ namespace At.Ac.FhStp.ViewJson
     }
 
 
+    public enum TextAlignment
+    {
+        Start,
+        Center,
+        End,
+    }
+
     /// <summary>
     /// Contains options for viewing json
     /// </summary>

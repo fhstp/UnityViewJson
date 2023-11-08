@@ -1,6 +1,5 @@
 ﻿#nullable enable
 
-using Newtonsoft.Json;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
