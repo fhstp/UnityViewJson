@@ -9,12 +9,6 @@ namespace At.Ac.FhStp.ViewJson
     {
     }
 
-    /// <summary>
-    /// Specifies the structure and format of a json document
-    /// </summary>
-    public interface IDataFormat
-    {
-    }
 
     /// <summary>
     /// Contains options for viewing json
@@ -29,9 +23,9 @@ namespace At.Ac.FhStp.ViewJson
         /// <summary>
         /// The format to use
         /// </summary>
-        public IDataFormat Format { get; }
+        public DataFormat Format { get; }
 
-        public ViewJsonOptions(IDataStyle style, IDataFormat format)
+        public ViewJsonOptions(IDataStyle style, DataFormat format)
         {
             Style = style;
             Format = format;

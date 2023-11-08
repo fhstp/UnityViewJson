@@ -2,9 +2,7 @@
 {
     internal class MockStyle : IDataStyle
     {
-
         public static MockStyle MakeDefault() =>
             new MockStyle();
-
     }
 }
