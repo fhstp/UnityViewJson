@@ -37,7 +37,7 @@ namespace At.Ac.FhStp.ViewJson
         {
             var options = new ViewJsonOptions(
                 MockStyle.MakeDefault(),
-                MockSchema.MakeDefault());
+                MockFormat.MakeDefault());
 
             var code = ViewJson.TryViewJsonIn(transform, json, options);
 
@@ -53,7 +53,7 @@ namespace At.Ac.FhStp.ViewJson
         {
             var options = new ViewJsonOptions(
                 MockStyle.MakeDefault(),
-                MockSchema.MakeDefault());
+                MockFormat.MakeDefault());
 
             var code = ViewJson.TryViewJsonIn(transform, json, options);
 
@@ -71,7 +71,7 @@ namespace At.Ac.FhStp.ViewJson
         {
             var options = new ViewJsonOptions(
                 MockStyle.MakeDefault(),
-                MockSchema.MakeDefault());
+                MockFormat.MakeDefault());
 
             var code = ViewJson.TryViewJsonIn(transform, json, options);
 

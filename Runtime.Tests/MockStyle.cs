@@ -1,6 +1,6 @@
 ﻿namespace At.Ac.FhStp.ViewJson
 {
-    internal class MockStyle : IViewJsonStyle
+    internal class MockStyle : IDataStyle
     {
 
         public static MockStyle MakeDefault() =>

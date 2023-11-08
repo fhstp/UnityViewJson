@@ -5,14 +5,14 @@ namespace At.Ac.FhStp.ViewJson
     /// <summary>
     /// Specifies how to style various types of Json elements
     /// </summary>
-    public interface IViewJsonStyle
+    public interface IDataStyle
     {
     }
 
     /// <summary>
-    /// Specifies the structure of a json document
+    /// Specifies the structure and format of a json document
     /// </summary>
-    public interface IViewJsonSchema
+    public interface IDataFormat
     {
     }
 
@@ -24,17 +24,17 @@ namespace At.Ac.FhStp.ViewJson
         /// <summary>
         /// The style to use
         /// </summary>
-        public IViewJsonStyle Style { get; }
+        public IDataStyle Style { get; }
 
         /// <summary>
-        /// The schema to use
+        /// The format to use
         /// </summary>
-        public IViewJsonSchema Schema { get; }
+        public IDataFormat Format { get; }
 
-        public ViewJsonOptions(IViewJsonStyle style, IViewJsonSchema schema)
+        public ViewJsonOptions(IDataStyle style, IDataFormat format)
         {
             Style = style;
-            Schema = schema;
+            Format = format;
         }
     }
 
