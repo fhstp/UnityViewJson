@@ -133,5 +133,43 @@ namespace At.Ac.FhStp.ViewJson
 
             Assert.That(text.color, Is.EqualTo(color));
         }
+
+        [Test]
+        [TestCase(TextAlignment.Start, HorizontalAlignmentOptions.Left)]
+        [TestCase(TextAlignment.Center, HorizontalAlignmentOptions.Center)]
+        [TestCase(TextAlignment.End, HorizontalAlignmentOptions.Right)]
+        public void Text_Has_Correct_Horizontal_Alignment(TextAlignment alignment, HorizontalAlignmentOptions expected)
+        {
+            var options = new ViewJsonOptions(
+                DataStyle.DefaultLight,
+                DataFormat.DefaultText.WithHorizontalTextAlignment(alignment));
+
+            var code = ViewJson.TryViewJsonIn(transform, "123", options);
+            Assert.That(code, Is.EqualTo(ViewJsonResultCode.Ok), "Should convert ok");
+
+            var text = transform.GetChild(0)?.GetComponent<TMP_Text>()!;
+            Assert.That(text, Is.Not.Null, "Child should exist");
+
+            Assert.That(text.horizontalAlignment, Is.EqualTo(expected));
+        }
+
+        [Test]
+        [TestCase(TextAlignment.Start, VerticalAlignmentOptions.Top)]
+        [TestCase(TextAlignment.Center, VerticalAlignmentOptions.Middle)]
+        [TestCase(TextAlignment.End, VerticalAlignmentOptions.Bottom)]
+        public void Text_Has_Correct_Vertical_Alignment(TextAlignment alignment, VerticalAlignmentOptions expected)
+        {
+            var options = new ViewJsonOptions(
+                DataStyle.DefaultLight,
+                DataFormat.DefaultText.WithVerticalTextAlignment(alignment));
+
+            var code = ViewJson.TryViewJsonIn(transform, "123", options);
+            Assert.That(code, Is.EqualTo(ViewJsonResultCode.Ok), "Should convert ok");
+
+            var text = transform.GetChild(0)?.GetComponent<TMP_Text>()!;
+            Assert.That(text, Is.Not.Null, "Child should exist");
+
+            Assert.That(text.verticalAlignment, Is.EqualTo(expected));
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿#nullable enable
 
+using System;
 using System.Globalization;
 using Newtonsoft.Json.Linq;
 using TMPro;
@@ -34,6 +35,23 @@ namespace At.Ac.FhStp.ViewJson
             transform.localScale = Vector3.one;
         }
 
+        private static TextAlignmentOptions ToTMPAlignment(TextAlignment horizontal, TextAlignment vertical)
+        {
+            return (horizontal, vertical) switch
+            {
+                (TextAlignment.Start, TextAlignment.Start) => TextAlignmentOptions.TopLeft,
+                (TextAlignment.Start, TextAlignment.Center) => TextAlignmentOptions.Left,
+                (TextAlignment.Start, TextAlignment.End) => TextAlignmentOptions.BottomLeft,
+                (TextAlignment.Center, TextAlignment.Start) => TextAlignmentOptions.Top,
+                (TextAlignment.Center, TextAlignment.Center) => TextAlignmentOptions.Center,
+                (TextAlignment.Center, TextAlignment.End) => TextAlignmentOptions.Bottom,
+                (TextAlignment.End, TextAlignment.Start) => TextAlignmentOptions.TopRight,
+                (TextAlignment.End, TextAlignment.Center) => TextAlignmentOptions.Right,
+                (TextAlignment.End, TextAlignment.End) => TextAlignmentOptions.BottomRight,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+        }
+
 
         /// <summary>
         /// Attempts to view json data inside of a rect-transform
@@ -54,40 +72,43 @@ namespace At.Ac.FhStp.ViewJson
                 return childTransform;
             }
 
-            ViewJsonResultCode ConvertString(string s, RectTransform container)
-            {
-                var transform = AddChild(container, true);
-                FillParent(transform);
-
-                transform.name = "Text";
-                var text = transform.gameObject.AddComponent<TextMeshProUGUI>();
-                text.text = s;
-                text.color = options.Style.TextColor;
-
-                return ViewJsonResultCode.Ok;
-            }
-
-            ViewJsonResultCode ConvertInteger(int i, RectTransform container) =>
-                ConvertString(i.ToString(), container);
-
-            ViewJsonResultCode ConvertFloat(float f, RectTransform container) =>
-                ConvertString(f.ToString(CultureInfo.InvariantCulture), container);
-
-            ViewJsonResultCode ConvertBoolean(bool b, RectTransform container) =>
-                ConvertString(b.ToString(), container);
-
-            ViewJsonResultCode ConvertNull(RectTransform container) =>
-                ConvertString("null", container);
-
             ViewJsonResultCode Convert(JToken token, RectTransform container)
             {
+                ViewJsonResultCode ConvertString(string s)
+                {
+                    var transform = AddChild(container, true);
+                    FillParent(transform);
+
+                    transform.name = "Text";
+                    var text = transform.gameObject.AddComponent<TextMeshProUGUI>();
+                    text.text = s;
+                    text.color = options.Style.TextColor;
+                    text.alignment = ToTMPAlignment(
+                        DataFormat.HorizontalTextAlignmentOf(token, options.Format),
+                        DataFormat.VerticalTextAlignmentOf(token, options.Format));
+
+                    return ViewJsonResultCode.Ok;
+                }
+
+                ViewJsonResultCode ConvertInteger(int i) =>
+                    ConvertString(i.ToString());
+
+                ViewJsonResultCode ConvertFloat(float f) =>
+                    ConvertString(f.ToString(CultureInfo.InvariantCulture));
+
+                ViewJsonResultCode ConvertBoolean(bool b) =>
+                    ConvertString(b.ToString());
+
+                ViewJsonResultCode ConvertNull() =>
+                    ConvertString("null");
+
                 return token.Type switch
                 {
-                    JTokenType.String => ConvertString(token.Value<string>()!, container),
-                    JTokenType.Integer => ConvertInteger(token.Value<int>(), container),
-                    JTokenType.Float => ConvertFloat(token.Value<float>(), container),
-                    JTokenType.Boolean => ConvertBoolean(token.Value<bool>(), container),
-                    JTokenType.Null => ConvertNull(container),
+                    JTokenType.String => ConvertString(token.Value<string>()!),
+                    JTokenType.Integer => ConvertInteger(token.Value<int>()),
+                    JTokenType.Float => ConvertFloat(token.Value<float>()),
+                    JTokenType.Boolean => ConvertBoolean(token.Value<bool>()),
+                    JTokenType.Null => ConvertNull(),
                     _ => ViewJsonResultCode.UnsupportedToken
                 };
             }

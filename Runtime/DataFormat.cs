@@ -46,7 +46,7 @@ namespace At.Ac.FhStp.ViewJson
             return format switch
             {
                 Text text => text.HorizontalAlignment,
-                _ => throw new ArgumentException("Invalid format type")
+                _ => HorizontalTextAlignmentOf(token, DefaultText)
             };
         }
 
@@ -55,7 +55,7 @@ namespace At.Ac.FhStp.ViewJson
             return format switch
             {
                 Text text => text.VerticalAlignment,
-                _ => throw new ArgumentException("Invalid format type")
+                _ => HorizontalTextAlignmentOf(token, DefaultText)
             };
         }
 
