@@ -35,7 +35,7 @@ namespace At.Ac.FhStp.ViewJson
         public void Viewing_Invalid_Json_Results_In_InvalidJson_Code(string json)
         {
             var options = new ViewJsonOptions(
-                MockStyle.MakeDefault(),
+                DataStyle.DefaultLight,
                 DataFormat.Default);
 
             var code = ViewJson.TryViewJsonIn(transform, json, options);
@@ -51,7 +51,7 @@ namespace At.Ac.FhStp.ViewJson
         public void Viewing_Valid_Json_Does_Not_Result_In_InvalidJson_Code(string json)
         {
             var options = new ViewJsonOptions(
-                MockStyle.MakeDefault(),
+                DataStyle.DefaultLight,
                 DataFormat.Default);
 
             var code = ViewJson.TryViewJsonIn(transform, json, options);
@@ -69,7 +69,7 @@ namespace At.Ac.FhStp.ViewJson
         public void Primitives_Are_Converted_To_Texts(string json, string content)
         {
             var options = new ViewJsonOptions(
-                MockStyle.MakeDefault(),
+                DataStyle.DefaultLight,
                 DataFormat.Default);
 
             var code = ViewJson.TryViewJsonIn(transform, json, options);
@@ -94,7 +94,7 @@ namespace At.Ac.FhStp.ViewJson
         public void Text_Transform_Fills_Container(string json)
         {
             var options = new ViewJsonOptions(
-                MockStyle.MakeDefault(),
+                DataStyle.DefaultLight,
                 DataFormat.DefaultText);
 
             var code = ViewJson.TryViewJsonIn(transform, json, options);
