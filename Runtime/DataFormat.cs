@@ -60,5 +60,20 @@ namespace At.Ac.FhStp.ViewJson
             };
         }
 
+        public static JObject Serialize(DataFormat format)
+        {
+            JObject TextToJson(Text text) =>
+                new JObject
+                {
+                    {"horizontalAlignment", JToken.FromObject(text.HorizontalAlignment)},
+                    {"verticalAlignment", JToken.FromObject(text.VerticalAlignment)}
+                };
+
+            return format switch
+            {
+                Text text => TextToJson(text),
+                _ => throw new ArgumentException("Invalid format type")
+            };
+        }
     }
 }
