@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
+using UnityEngine;
 
 namespace At.Ac.FhStp.ViewJson
 {
@@ -17,10 +18,13 @@ namespace At.Ac.FhStp.ViewJson
         {
             public TextAlignment HorizontalAlignment { get; }
 
+            public TextAlignment VerticalAlignment { get; }
 
-            public Text(TextAlignment horizontalAlignment)
+
+            public Text(TextAlignment horizontalAlignment, TextAlignment verticalAlignment)
             {
                 HorizontalAlignment = horizontalAlignment;
+                VerticalAlignment = verticalAlignment;
             }
         }
 
@@ -30,7 +34,9 @@ namespace At.Ac.FhStp.ViewJson
 
         private const TextAlignment DefaultTextAlignment = TextAlignment.Start;
 
-        public static DataFormat DefaultText = new Text(DefaultTextAlignment);
+        public static DataFormat DefaultText = new Text(
+            DefaultTextAlignment,
+            DefaultTextAlignment);
 
         public static DataFormat EmptyContainer = new Container();
 
@@ -44,5 +50,15 @@ namespace At.Ac.FhStp.ViewJson
                 _ => throw new ArgumentException("Invalid format type")
             };
         }
+
+        public static TextAlignment VerticalTextAlignmentOf(JToken token, DataFormat format)
+        {
+            return format switch
+            {
+                Text text => text.VerticalAlignment,
+                _ => throw new ArgumentException("Invalid format type")
+            };
+        }
+
     }
 }

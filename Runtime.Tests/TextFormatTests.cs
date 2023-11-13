@@ -30,5 +30,28 @@ namespace At.Ac.FhStp.ViewJson
 
             Assert.That(alignment, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void Text_Is_Vertically_Aligned_To_Start_By_Default()
+        {
+            var format = DataFormat.DefaultText;
+
+            var alignment = DataFormat.VerticalTextAlignmentOf(testText, format);
+
+            Assert.That(alignment, Is.EqualTo(TextAlignment.Start));
+        }
+
+        [Test]
+        [TestCase(TextAlignment.Start)]
+        [TestCase(TextAlignment.Center)]
+        [TestCase(TextAlignment.End)]
+        public void Vertical_Text_Alignment_Can_Be_Configured(TextAlignment expected)
+        {
+            var format = DataFormat.DefaultText.WithVerticalTextAlignment(expected);
+
+            var alignment = DataFormat.VerticalTextAlignmentOf(testText, format);
+
+            Assert.That(alignment, Is.EqualTo(expected));
+        }
     }
 }
