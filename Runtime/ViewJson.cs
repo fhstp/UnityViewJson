@@ -24,6 +24,16 @@ namespace At.Ac.FhStp.ViewJson
             }
         }
 
+        private static void FillParent(RectTransform transform)
+        {
+            transform.anchorMin = Vector2.zero;
+            transform.anchorMax = Vector2.one;
+            transform.sizeDelta = Vector2.zero;
+            transform.offsetMin = Vector2.zero;
+            transform.offsetMax = Vector2.zero;
+            transform.localScale = Vector3.one;
+        }
+
 
         /// <summary>
         /// Attempts to view json data inside of a rect-transform
@@ -47,6 +57,8 @@ namespace At.Ac.FhStp.ViewJson
             ViewJsonResultCode ConvertString(string s, RectTransform container)
             {
                 var transform = AddChild(container, true);
+                FillParent(transform);
+
                 transform.name = "Text";
                 var text = transform.gameObject.AddComponent<TextMeshProUGUI>();
                 text.text = s;

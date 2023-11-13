@@ -84,5 +84,31 @@ namespace At.Ac.FhStp.ViewJson
 
             Assert.That(text.text, Is.EqualTo(content), "Content should match");
         }
+
+        [Test]
+        [TestCase("123")]
+        [TestCase("1.23")]
+        [TestCase("\"hello\"")]
+        [TestCase("true")]
+        [TestCase("null")]
+        public void Text_Transform_Fills_Container(string json)
+        {
+            var options = new ViewJsonOptions(
+                MockStyle.MakeDefault(),
+                DataFormat.DefaultText);
+
+            var code = ViewJson.TryViewJsonIn(transform, json, options);
+            Assert.That(code, Is.EqualTo(ViewJsonResultCode.Ok), "Should convert ok");
+
+            var child = (transform.GetChild(0) as RectTransform)!;
+            Assert.That(child, Is.Not.Null, "Child should exist");
+
+            Assert.That(child.anchorMin, Is.EqualTo(Vector2.zero));
+            Assert.That(child.anchorMax, Is.EqualTo(Vector2.one));
+            Assert.That(child.sizeDelta, Is.EqualTo(Vector2.zero));
+            Assert.That(child.offsetMin, Is.EqualTo(Vector2.zero));
+            Assert.That(child.offsetMax, Is.EqualTo(Vector2.zero));
+            Assert.That(child.localScale, Is.EqualTo(Vector3.one));
+        }
     }
 }
