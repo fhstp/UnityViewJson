@@ -171,5 +171,24 @@ namespace At.Ac.FhStp.ViewJson
 
             Assert.That(text.verticalAlignment, Is.EqualTo(expected));
         }
+
+        [Test]
+        [TestCase("$")]
+        [TestCase("cm")]
+        [TestCase("%")]
+        public void Text_Has_Correct_Postfix(string postfix)
+        {
+            var options = new ViewJsonOptions(
+                DataStyle.DefaultLight,
+                DataFormat.DefaultText.WithPostfix(postfix));
+
+            var code = ViewJson.TryViewJsonIn(transform, "123", options);
+            Assert.That(code, Is.EqualTo(ViewJsonResultCode.Ok), "Should convert ok");
+
+            var text = transform.GetChild(0)?.GetComponent<TMP_Text>()!;
+            Assert.That(text, Is.Not.Null, "Child should exist");
+
+            Assert.That(text.text.EndsWith(postfix));
+        }
     }
 }

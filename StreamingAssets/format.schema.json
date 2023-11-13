@@ -18,12 +18,11 @@
         },
         "verticalAlignment": {
           "$ref": "#/definitions/alignment-style"
+        },
+        "postfix": {
+          "type": "string"
         }
-      },
-      "required": [
-        "horizontalAlignment",
-        "verticalAlignment"
-      ]
+      }
     }
   },
   "oneOf": [

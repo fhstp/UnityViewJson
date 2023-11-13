@@ -9,7 +9,10 @@ namespace At.Ac.FhStp.ViewJson
             return format switch
             {
                 DataFormat.Text text =>
-                    new DataFormat.Text(alignment, text.VerticalAlignment),
+                    new DataFormat.Text(
+                        alignment,
+                        text.VerticalAlignment,
+                        text.Postfix),
                 _ => throw new ArgumentException("Invalid format type")
             };
         }
@@ -19,7 +22,23 @@ namespace At.Ac.FhStp.ViewJson
             return format switch
             {
                 DataFormat.Text text =>
-                    new DataFormat.Text(text.HorizontalAlignment, alignment),
+                    new DataFormat.Text(
+                        text.HorizontalAlignment,
+                        alignment,
+                        text.Postfix),
+                _ => throw new ArgumentException("Invalid format type")
+            };
+        }
+
+        public static DataFormat WithPostfix(this DataFormat format, string postfix)
+        {
+            return format switch
+            {
+                DataFormat.Text text =>
+                    new DataFormat.Text(
+                        text.HorizontalAlignment,
+                        text.VerticalAlignment,
+                        postfix),
                 _ => throw new ArgumentException("Invalid format type")
             };
         }

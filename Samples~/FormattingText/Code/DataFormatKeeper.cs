@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace At.Ac.FhStp.ViewJson.Samples.TextFormatting
@@ -10,6 +11,7 @@ namespace At.Ac.FhStp.ViewJson.Samples.TextFormatting
 
         [SerializeField] private TextAlignmentInput horizontalAlignmentInput;
         [SerializeField] private TextAlignmentInput verticalAlignmentInput;
+        [SerializeField] private TMP_InputField postfixInput;
 
 
         public DataFormat Format { get; private set; } = DataFormat.Default;
@@ -23,6 +25,8 @@ namespace At.Ac.FhStp.ViewJson.Samples.TextFormatting
             Format = DataFormat.DefaultText
                                .WithHorizontalTextAlignment(horizontalAlignment)
                                .WithVerticalTextAlignment(verticalAlignment);
+            if (postfixInput.text != string.Empty)
+                Format = Format.WithPostfix(postfixInput.text);
             FormatChanged?.Invoke(Format);
         }
 
@@ -30,6 +34,7 @@ namespace At.Ac.FhStp.ViewJson.Samples.TextFormatting
         {
             horizontalAlignmentInput.ValueChanged += _ => UpdateFormat();
             verticalAlignmentInput.ValueChanged += _ => UpdateFormat();
+            postfixInput.onValueChanged.AddListener(_ => UpdateFormat());
         }
     }
 }

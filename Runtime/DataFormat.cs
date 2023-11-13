@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using Newtonsoft.Json.Linq;
 
 namespace At.Ac.FhStp.ViewJson
@@ -19,11 +21,14 @@ namespace At.Ac.FhStp.ViewJson
 
             public TextAlignment VerticalAlignment { get; }
 
+            public string? Postfix { get; }
 
-            public Text(TextAlignment horizontalAlignment, TextAlignment verticalAlignment)
+
+            public Text(TextAlignment horizontalAlignment, TextAlignment verticalAlignment, string? postfix)
             {
                 HorizontalAlignment = horizontalAlignment;
                 VerticalAlignment = verticalAlignment;
+                Postfix = postfix;
             }
         }
 
@@ -35,7 +40,8 @@ namespace At.Ac.FhStp.ViewJson
 
         public static DataFormat DefaultText = new Text(
             DefaultTextAlignment,
-            DefaultTextAlignment);
+            DefaultTextAlignment,
+            null);
 
         public static DataFormat EmptyContainer = new Container();
 
@@ -59,14 +65,29 @@ namespace At.Ac.FhStp.ViewJson
             };
         }
 
+        public static string PostfixOf(JToken token, DataFormat format)
+        {
+            return format switch
+            {
+                Text text => text.Postfix ?? "",
+                _ => PostfixOf(token, DefaultText)
+            };
+        }
+
         public static JObject Serialize(DataFormat format)
         {
-            JObject TextToJson(Text text) =>
-                new JObject
-                {
-                    {"horizontalAlignment", JToken.FromObject(text.HorizontalAlignment)},
-                    {"verticalAlignment", JToken.FromObject(text.VerticalAlignment)}
-                };
+            JObject TextToJson(Text text)
+            {
+                var json = new JObject();
+
+                json.Add("horizontalAlignment", JToken.FromObject(text.HorizontalAlignment));
+                json.Add("verticalAlignment", JToken.FromObject(text.VerticalAlignment));
+
+                if (text.Postfix != null)
+                    json.Add("postfix", JToken.FromObject(text.Postfix));
+
+                return json;
+            }
 
             return format switch
             {

@@ -54,5 +54,27 @@ namespace At.Ac.FhStp.ViewJson
             Assert.That(alignment, Is.EqualTo(expected));
         }
 
+        [Test]
+        public void Text_Has_No_Postfix_By_Default()
+        {
+            var format = DataFormat.DefaultText;
+
+            var alignment = DataFormat.PostfixOf(testText, format);
+
+            Assert.That(alignment, Is.EqualTo(string.Empty));
+        }
+
+        [Test]
+        [TestCase("%")]
+        [TestCase("cm")]
+        [TestCase("$")]
+        public void Postfix_Can_Be_Configured(string expected)
+        {
+            var format = DataFormat.DefaultText.WithPostfix(expected);
+
+            var alignment = DataFormat.PostfixOf(testText, format);
+
+            Assert.That(alignment, Is.EqualTo(expected));
+        }
     }
 }

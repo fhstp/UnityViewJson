@@ -81,7 +81,7 @@ namespace At.Ac.FhStp.ViewJson
 
                     transform.name = "Text";
                     var text = transform.gameObject.AddComponent<TextMeshProUGUI>();
-                    text.text = s;
+                    text.text = s + DataFormat.PostfixOf(token, options.Format);
                     text.color = options.Style.TextColor;
                     text.alignment = ToTMPAlignment(
                         DataFormat.HorizontalTextAlignmentOf(token, options.Format),
