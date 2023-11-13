@@ -12,15 +12,18 @@ namespace At.Ac.FhStp.ViewJson.Samples.TextFormatting
         [SerializeField] private TextAlignmentInput verticalAlignmentInput;
 
 
+        public DataFormat Format { get; private set; } = DataFormat.Default;
+
+
         private void UpdateFormat()
         {
             var horizontalAlignment = horizontalAlignmentInput.Value;
             var verticalAlignment = verticalAlignmentInput.Value;
 
-            var format = DataFormat.DefaultText
-                                   .WithHorizontalTextAlignment(horizontalAlignment)
-                                   .WithVerticalTextAlignment(verticalAlignment);
-            FormatChanged?.Invoke(format);
+            Format = DataFormat.DefaultText
+                               .WithHorizontalTextAlignment(horizontalAlignment)
+                               .WithVerticalTextAlignment(verticalAlignment);
+            FormatChanged?.Invoke(Format);
         }
 
         private void Awake()

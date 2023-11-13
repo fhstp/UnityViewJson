@@ -454,20 +454,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5890547355289320309}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5890547355932649940}
-        m_TargetAssemblyTypeName: At.Ac.FhStp.ViewJson.Samples.TextFormatting.TextAlignmentInput,
-          At.Ac.FhStp.ViewJson.Samples.TextFormatting
-        m_MethodName: SetCenter
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5890547355289320311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,20 +730,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5890547355803818262}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5890547355932649940}
-        m_TargetAssemblyTypeName: At.Ac.FhStp.ViewJson.Samples.TextFormatting.TextAlignmentInput,
-          At.Ac.FhStp.ViewJson.Samples.TextFormatting
-        m_MethodName: SetStart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5890547355803818728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,20 +950,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5890547356160259039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5890547355932649940}
-        m_TargetAssemblyTypeName: At.Ac.FhStp.ViewJson.Samples.TextFormatting.TextAlignmentInput,
-          At.Ac.FhStp.ViewJson.Samples.TextFormatting
-        m_MethodName: SetEnd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5890547356160259025
 MonoBehaviour:
   m_ObjectHideFlags: 0
