@@ -12,9 +12,9 @@ namespace At.Ac.FhStp.ViewJson
 
     public enum TextAlignment
     {
-        Start,
-        Center,
-        End,
+        Start = 0,
+        Center = 1,
+        End = 2,
     }
 
     /// <summary>
