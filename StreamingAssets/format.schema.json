@@ -1,4 +1,34 @@
 ﻿{
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "title": "ViewJson format",
+  "definitions": {
+    "alignment-style": {
+      "type": "string",
+      "enum": [
+        "start",
+        "center",
+        "end"
+      ]
+    },
+    "text-style": {
+      "type": "object",
+      "properties": {
+        "horizontalAlignment": {
+          "$ref": "#/definitions/alignment-style"
+        },
+        "verticalAlignment": {
+          "$ref": "#/definitions/alignment-style"
+        }
+      },
+      "required": [
+        "horizontalAlignment",
+        "verticalAlignment"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/definitions/text-style"
+    }
+  ]
 }
