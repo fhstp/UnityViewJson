@@ -62,6 +62,7 @@ namespace At.Ac.FhStp.ViewJson
                 transform.name = "Text";
                 var text = transform.gameObject.AddComponent<TextMeshProUGUI>();
                 text.text = s;
+                text.color = options.Style.TextColor;
 
                 return ViewJsonResultCode.Ok;
             }

@@ -110,5 +110,28 @@ namespace At.Ac.FhStp.ViewJson
             Assert.That(child.offsetMax, Is.EqualTo(Vector2.zero));
             Assert.That(child.localScale, Is.EqualTo(Vector3.one));
         }
+
+        [Test]
+        [TestCase("123")]
+        [TestCase("1.23")]
+        [TestCase("\"hello\"")]
+        [TestCase("true")]
+        [TestCase("null")]
+        public void Text_Has_Correct_Color(string json)
+        {
+            var style = DataStyle.DefaultLight;
+            var color = style.TextColor;
+            var options = new ViewJsonOptions(
+                style,
+                DataFormat.DefaultText);
+
+            var code = ViewJson.TryViewJsonIn(transform, json, options);
+            Assert.That(code, Is.EqualTo(ViewJsonResultCode.Ok), "Should convert ok");
+
+            var text = transform.GetChild(0)?.GetComponent<TMP_Text>()!;
+            Assert.That(text, Is.Not.Null, "Child should exist");
+
+            Assert.That(text.color, Is.EqualTo(color));
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿#nullable enable
 
+using UnityEngine;
+
 namespace At.Ac.FhStp.ViewJson
 {
     /// <summary>
@@ -7,6 +9,7 @@ namespace At.Ac.FhStp.ViewJson
     /// </summary>
     public interface IDataStyle
     {
+        public Color TextColor { get; }
     }
 
 
