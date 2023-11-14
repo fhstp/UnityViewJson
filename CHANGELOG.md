@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Upcoming
 
+## 0.3.1 - 14.11.2023
+
 ### Added
 
 - Basic usage info in readme
