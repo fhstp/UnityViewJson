@@ -95,5 +95,10 @@ namespace At.Ac.FhStp.ViewJson
                 _ => throw new ArgumentException("Invalid format type")
             };
         }
+
+        public static DataFormat? TryParse(string json)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
