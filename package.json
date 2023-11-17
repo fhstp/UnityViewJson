@@ -1,6 +1,6 @@
 {
   "name": "at.ac.fhstp.view-json",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "displayName": "ViewJson",
   "description": "A Unity package to view Json data using the builtin UI system",
   "unity": "2020.3",
