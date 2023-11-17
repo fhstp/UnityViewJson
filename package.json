@@ -18,5 +18,12 @@
     "ui",
     "view"
   ],
+  "samples": [
+    {
+      "displayName": "Text-formatting",
+      "description": "Examples of how ext can be formatted",
+      "path": "Samples~/FormattingText"
+    }
+  ],
   "hideInEditor": false
 }

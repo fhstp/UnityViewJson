@@ -6,6 +6,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Upcoming
 
+### Added
+
+- List text-formatting sample in manifest
+
 ## 0.3.1 - 14.11.2023
 
 ### Added
