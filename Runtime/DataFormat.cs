@@ -78,10 +78,11 @@ namespace At.Ac.FhStp.ViewJson
         {
             JObject TextToJson(Text text)
             {
-                var json = new JObject();
-
-                json.Add("horizontalAlignment", JToken.FromObject(text.HorizontalAlignment));
-                json.Add("verticalAlignment", JToken.FromObject(text.VerticalAlignment));
+                var json = new JObject
+                {
+                    {"horizontalAlignment", JToken.FromObject(text.HorizontalAlignment)},
+                    {"verticalAlignment", JToken.FromObject(text.VerticalAlignment)}
+                };
 
                 if (text.Postfix != null)
                     json.Add("postfix", JToken.FromObject(text.Postfix));
